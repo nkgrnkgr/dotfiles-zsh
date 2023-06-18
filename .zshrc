@@ -51,19 +51,26 @@ setopt noflowcontrol
 bindkey '^q' fzf-cdr
 
 # fzf find branch and switch branch
-swb() {
+sw() {
   local branches branch
   branches=$(git branch -vv) &&
   branch=$(echo "$branches" | fzf --reverse +m) &&
   git switch $(echo "$branch" | awk '{print $1}' | sed "s/.* //")
 }
 # fzf find branch and switch branch with remote
-swbr() {
+swr() {
   local branches branch
   branches=$(git branch --all | grep -v HEAD) &&
   branch=$(echo "$branches" |
            fzf-tmux --reverse -d $(( 2 + $(wc -l <<< "$branches") )) +m) &&
   git switch $(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
+}
+
+# fd - cd to selected directory
+fo() {
+  local dir
+  dir=$(find ${1:-.} -path '*/\.*' -prune -o -type f -print 2> /dev/null | fzf +m --reverse) &&
+  code "$dir"
 }
 
 
