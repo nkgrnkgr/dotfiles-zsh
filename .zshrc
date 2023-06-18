@@ -50,20 +50,20 @@ zle -N fzf-cdr
 setopt noflowcontrol
 bindkey '^q' fzf-cdr
 
-# fzf git branch search
-fbr() {
+# fzf find branch and switch branch
+swb() {
   local branches branch
   branches=$(git branch -vv) &&
   branch=$(echo "$branches" | fzf --reverse +m) &&
-  git checkout $(echo "$branch" | awk '{print $1}' | sed "s/.* //")
+  git switch $(echo "$branch" | awk '{print $1}' | sed "s/.* //")
 }
-# fzf git branch search includes remote
-fbrm() {
+# fzf find branch and switch branch with remote
+swbr() {
   local branches branch
   branches=$(git branch --all | grep -v HEAD) &&
   branch=$(echo "$branches" |
            fzf-tmux --reverse -d $(( 2 + $(wc -l <<< "$branches") )) +m) &&
-  git checkout $(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
+  git switch $(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
 }
 
 
