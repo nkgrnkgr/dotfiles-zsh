@@ -1,5 +1,13 @@
 # dotfiles-zsh
 
+## require
+
+```
+brew install fzf
+brew install ripgrep
+brew install bat
+```
+
 ## install
 
 `git clone git@github.com:nkgrnkgr/dotfiles-zsh.git`

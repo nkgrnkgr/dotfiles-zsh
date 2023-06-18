@@ -19,6 +19,19 @@ setopt hist_reduce_blanks
 
 setopt print_eight_bit
 
+# Starship
+eval "$(starship init zsh)"
+
+# nodenv
+eval "$(nodenv init -)"
+
+# sheldon
+eval "$(sheldon source)"
+
+# alias
+alias gui='gitui'
+alias pn='pnpm'
+
 # fzf設定
 export FZF_DEFAULT_OPTS='--layout=reverse --border'
 
@@ -54,14 +67,14 @@ setopt noflowcontrol
 bindkey '^q' fzf-cdr
 
 # fzf find branch and switch branch
-sw() {
+function sw() {
   local branches branch
   branches=$(git branch -vv) &&
   branch=$(echo "$branches" | fzf --reverse +m) &&
   git switch $(echo "$branch" | awk '{print $1}' | sed "s/.* //")
 }
 # fzf find branch and switch branch with remote
-swr() {
+function swr() {
   local branches branch
   branches=$(git branch --all | grep -v HEAD) &&
   branch=$(echo "$branches" |
@@ -70,22 +83,22 @@ swr() {
 }
 
 # fd - cd to selected directory
-fo() {
+function fo() {
   local dir
   dir=$(find ${1:-.} -path '*/\.*' -prune -o -type f -print 2> /dev/null | fzf +m --reverse) &&
   code "$dir"
 }
 
+# https://github.com/junegunn/fzf/blob/master/ADVANCED.md#ripgrep-integration
+# 1. Search for text in files using Ripgrep
+# 2. Interactively narrow down the list using fzf
+# 3. Open the file in Vim
+function fg() {
+  rg --color=always --line-number --no-heading --smart-case "${*:-}" |
+    fzf --ansi \
+        --color "hl:-1:underline,hl+:-1:underline:reverse" \
+        --delimiter : \
+        --preview 'bat --color=always {1} --highlight-line {2}' \
+        --bind 'enter:become(code {1})'
+}
 
-# Starship
-eval "$(starship init zsh)"
-
-# nodenv
-eval "$(nodenv init -)"
-
-# sheldon
-eval "$(sheldon source)"
-
-# alias
-alias gui='gitui'
-alias pn='pnpm'
