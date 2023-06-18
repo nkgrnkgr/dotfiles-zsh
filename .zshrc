@@ -34,6 +34,7 @@ alias pn='pnpm'
 
 # fzf設定
 export FZF_DEFAULT_OPTS='--layout=reverse --border'
+export FZF_DEFAULT_COMMAND='fd --type f'
 
 # fzf history
 function fzf-select-history() {
@@ -82,11 +83,9 @@ function swr() {
   git switch $(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
 }
 
-# fd - cd to selected directory
-function fo() {
-  local dir
-  dir=$(find ${1:-.} -path '*/\.*' -prune -o -type f -print 2> /dev/null | fzf +m --reverse) &&
-  code "$dir"
+# find file and open with vscode
+function f() {
+  fd . -t f | fzf --preview 'bat --color=always {1}' | xargs -o code  
 }
 
 # https://github.com/junegunn/fzf/blob/master/ADVANCED.md#ripgrep-integration
