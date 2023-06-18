@@ -2,8 +2,8 @@
 
 ## install
 
-`git@github.com:nkgrnkgr/dotfiles-zsh.git`
+`git clone git@github.com:nkgrnkgr/dotfiles-zsh.git`
 
 ## create link
 
-`ln -sf ~/dotfiles/.zshrc ~/.zshrc`
+`ln -sf ~/dotfiles-zsh/.zshrc ~/.zshrc`
