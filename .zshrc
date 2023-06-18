@@ -19,6 +19,9 @@ setopt hist_reduce_blanks
 
 setopt print_eight_bit
 
+# fzf設定
+export FZF_DEFAULT_OPTS='--layout=reverse --border'
+
 # fzf history
 function fzf-select-history() {
     BUFFER=$(history -n -r 1 | fzf --query "$LBUFFER" --reverse)
