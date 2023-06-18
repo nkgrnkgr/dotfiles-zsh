@@ -85,7 +85,7 @@ function swr() {
 
 # find file and open with vscode
 function f() {
-  fd . -t f | fzf --preview 'bat --color=always {1}' | xargs -o code  
+  fd . -t f -H -E 'node_modules/*' -E '.git' | fzf --preview 'bat --color=always {1}' | xargs -o code  
 }
 
 # https://github.com/junegunn/fzf/blob/master/ADVANCED.md#ripgrep-integration
