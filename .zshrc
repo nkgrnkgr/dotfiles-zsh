@@ -28,6 +28,9 @@ eval "$(nodenv init -)"
 # sheldon
 eval "$(sheldon source)"
 
+# zoxide
+eval "$(zoxide init zsh)"
+
 # alias
 alias gui='gitui'
 alias pn='pnpm'
@@ -35,6 +38,7 @@ alias pn='pnpm'
 # fzf設定
 export FZF_DEFAULT_OPTS='--layout=reverse --border'
 export FZF_DEFAULT_COMMAND='fd --type f'
+export _ZO_FZF_OPTS="$_FZF_DEFAULT_OPTS --preview 'exa -T --git-ignore {2}'"
 
 # fzf history
 function fzf-select-history() {
@@ -56,7 +60,7 @@ fi
 
 # fzf cdr
 function fzf-cdr() {
-    local selected_dir=$(cdr -l | awk '{ print $2 }' | fzf --reverse)
+    local selected_dir=$(cdr -l | awk '{ print $2 }' | fzf --preview 'cat {}')
     if [ -n "$selected_dir" ]; then
         BUFFER="cd ${selected_dir}"
         zle accept-line
@@ -100,4 +104,3 @@ function fg() {
         --preview 'bat --color=always {1} --highlight-line {2}' \
         --bind 'enter:become(code {1})'
 }
-
