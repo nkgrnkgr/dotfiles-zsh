@@ -38,7 +38,7 @@ alias pn='pnpm'
 # fzf設定
 export FZF_DEFAULT_OPTS='--layout=reverse --border'
 export FZF_DEFAULT_COMMAND='fd --type f'
-export _ZO_FZF_OPTS="$_FZF_DEFAULT_OPTS --reverse --preview 'tree -C {} | head -200'"
+export _ZO_FZF_OPTS="$_FZF_DEFAULT_OPTS --reverse --preview 'tree -C {2} | head -200'"
 
 # fzf history
 function fzf-select-history() {
@@ -60,12 +60,13 @@ fi
 
 # fzf cdr
 function fzf-cdr() {
-    local selected_dir=$(cdr -l | awk '{ print $2 }' | fzf)
-    if [ -n "$selected_dir" ]; then
-        BUFFER="cd ${selected_dir}"
-        zle accept-line
-    fi
-    zle clear-screen
+    # local selected_dir=$(cdr -l | awk '{ print $2 }' | fzf)
+    # if [ -n "$selected_dir" ]; then
+    #     BUFFER="cd ${selected_dir}"
+    #     zle accept-line
+    # fi
+    # zle clear-screen
+    zi
 }
 zle -N fzf-cdr
 setopt noflowcontrol
