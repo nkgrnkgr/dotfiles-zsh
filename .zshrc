@@ -34,6 +34,7 @@ eval "$(zoxide init zsh)"
 # alias
 alias gui='gitui'
 alias pn='pnpm'
+alias cd='z'
 
 # fzf設定
 export FZF_DEFAULT_OPTS='--layout=reverse --border'
