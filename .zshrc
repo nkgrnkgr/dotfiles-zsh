@@ -68,7 +68,7 @@ function fzf-cdr() {
     # fi
     # zle clear-screen
     zi
-    zle clear-screen
+    zle reset-prompt
 }
 zle -N fzf-cdr
 setopt noflowcontrol
