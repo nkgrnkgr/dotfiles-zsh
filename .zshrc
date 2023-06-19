@@ -38,7 +38,7 @@ alias pn='pnpm'
 # fzf設定
 export FZF_DEFAULT_OPTS='--layout=reverse --border'
 export FZF_DEFAULT_COMMAND='fd --type f'
-export _ZO_FZF_OPTS="$_FZF_DEFAULT_OPTS --preview 'exa -T --git-ignore {2}'"
+export _ZO_FZF_OPTS="$_FZF_DEFAULT_OPTS --reverse --preview 'tree -C {} | head -200'"
 
 # fzf history
 function fzf-select-history() {
