@@ -36,6 +36,7 @@ eval "$(zoxide init zsh)"
 alias gui='gitui'
 alias pn='pnpm'
 alias cd='z'
+alias gbd="git b | fzf | xargs git b -D"
 
 # fzf設定
 export FZF_DEFAULT_OPTS='--layout=reverse --border'
@@ -108,4 +109,3 @@ function fg() {
         --preview 'bat --color=always {1} --highlight-line {2}' \
         --bind 'enter:become(code {1})'
 }
-
