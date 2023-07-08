@@ -40,7 +40,7 @@ alias cd='z'
 # fzf設定
 export FZF_DEFAULT_OPTS='--layout=reverse --border'
 export FZF_DEFAULT_COMMAND='fd --type f'
-export _ZO_FZF_OPTS="$_FZF_DEFAULT_OPTS --reverse --preview 'tree -C {2} | head -200' --header-lines=1 --preview-window=down,border-top"
+export _ZO_FZF_OPTS="$_FZF_DEFAULT_OPTS --reverse --preview 'tree -C {2} | head -200' --preview-window=down,border-top"
 
 # fzf history
 function fzf-select-history() {
