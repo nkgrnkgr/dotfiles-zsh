@@ -25,6 +25,7 @@ eval "$(starship init zsh)"
 # nodenv
 eval "$(nodenv init -)"
 
+
 # sheldon
 eval "$(sheldon source)"
 
@@ -39,7 +40,7 @@ alias cd='z'
 # fzf設定
 export FZF_DEFAULT_OPTS='--layout=reverse --border'
 export FZF_DEFAULT_COMMAND='fd --type f'
-export _ZO_FZF_OPTS="$_FZF_DEFAULT_OPTS --reverse --preview 'tree -C {2} | head -200'"
+export _ZO_FZF_OPTS="$_FZF_DEFAULT_OPTS --reverse --preview 'tree -C {2} | head -200' --header-lines=1 --preview-window=down,border-top"
 
 # fzf history
 function fzf-select-history() {
@@ -107,3 +108,4 @@ function fg() {
         --preview 'bat --color=always {1} --highlight-line {2}' \
         --bind 'enter:become(code {1})'
 }
+
