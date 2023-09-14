@@ -16,6 +16,8 @@ setopt hist_ignore_dups
 setopt hist_ignore_all_dups
 setopt hist_ignore_space
 setopt hist_reduce_blanks
+setopt hist_expire_dups_first # 履歴を切り詰める際に、重複する最も古いイベントから消す
+setopt hist_save_no_dups      # 履歴ファイルに書き出す際、新しいコマンドと重複する古いコマンドは切り捨てる
 
 setopt print_eight_bit
 
@@ -109,3 +111,28 @@ function fg() {
         --preview 'bat --color=always {1} --highlight-line {2}' \
         --bind 'enter:become(code {1})'
 }
+
+// 失敗したコマンドを履歴に残さない
+__record_command() {
+  typeset -g _LASTCMD=${1%%$'\n'}
+  return 1
+}
+zshaddhistory_functions+=(__record_command)
+
+__update_history() {
+  local last_status="$?"
+
+  # hist_ignore_space
+  if [[ ! -n ${_LASTCMD%% *} ]]; then
+    return
+  fi
+
+  # hist_reduce_blanks
+  local cmd_reduce_blanks=$(echo ${_LASTCMD} | tr -s ' ')
+
+  # Record the commands that have succeeded
+  if [[ ${last_status} == 0 ]]; then
+    print -sr -- "${cmd_reduce_blanks}"
+  fi
+}
+precmd_functions+=(__update_history)
