@@ -22,10 +22,15 @@ setopt hist_save_no_dups      # 履歴ファイルに書き出す際、新しい
 setopt print_eight_bit
 
 # Starship
-eval "$(starship init zsh)"
+# eval "$(starship init zsh)"
+
+# pure
+fpath+=("$(brew --prefix)/share/zsh/site-functions")
+autoload -U promptinit; promptinit
+prompt pure
 
 # nodenv
-eval "$(nodenv init -)"
+# eval "$(nodenv init -)"
 
 
 # sheldon
