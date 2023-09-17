@@ -117,7 +117,7 @@ function fg() {
         --bind 'enter:become(code {1})'
 }
 
-// 失敗したコマンドを履歴に残さない
+# 失敗したコマンドを履歴に残さない
 __record_command() {
   typeset -g _LASTCMD=${1%%$'\n'}
   return 1
