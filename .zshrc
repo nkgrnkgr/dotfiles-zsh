@@ -30,7 +30,7 @@ autoload -U promptinit; promptinit
 prompt pure
 
 # nodenv
-# eval "$(nodenv init -)"
+eval "$(nodenv init -)"
 
 
 # sheldon
