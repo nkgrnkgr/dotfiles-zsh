@@ -37,7 +37,6 @@ alias gui='gitui'
 alias pn='pnpm'
 alias cd='z'
 alias gbd="git b | fzf | xargs git b -D"
-alias gpoh= "git push origin HEAD"
 
 # fzf設定
 export FZF_DEFAULT_OPTS='--layout=reverse --border'
