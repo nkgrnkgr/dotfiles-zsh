@@ -1,0 +1,4 @@
+[tools]
+node = '20'
+"npm:pnpm" = 'latest'
+deno = '2.0.3'

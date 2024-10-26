@@ -20,3 +20,5 @@ brew install mise
 ## create link
 
 `ln -sf ~/dotfiles-zsh/.zshrc ~/.zshrc`
+
+`ln -sf ~/dotfiles-zsh/mise/.config.toml ~/.config/mise/config.toml`
