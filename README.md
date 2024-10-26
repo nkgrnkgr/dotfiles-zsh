@@ -3,6 +3,8 @@
 ## require
 
 ```
+brew install pure
+brew install sheldon
 brew install fzf
 brew install ripgrep
 brew install bat
