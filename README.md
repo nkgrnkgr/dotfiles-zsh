@@ -10,6 +10,7 @@ brew install ripgrep
 brew install bat
 brew install fd
 brew install zoxide
+brew install mise
 ```
 
 ## install

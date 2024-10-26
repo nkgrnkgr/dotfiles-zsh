@@ -148,3 +148,6 @@ function select-git-branch-friendly() {
 }
 zle -N select-git-branch-friendly
 bindkey '^b' select-git-branch-friendly
+
+# mise
+eval "$(~/.local/bin/mise activate zsh)"
