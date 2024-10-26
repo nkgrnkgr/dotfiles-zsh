@@ -21,17 +21,10 @@ setopt hist_save_no_dups      # 履歴ファイルに書き出す際、新しい
 
 setopt print_eight_bit
 
-# Starship
-# eval "$(starship init zsh)"
-
 # pure
 fpath+=("$(brew --prefix)/share/zsh/site-functions")
 autoload -U promptinit; promptinit
 prompt pure
-
-# nodenv
-eval "$(nodenv init -)"
-
 
 # sheldon
 eval "$(sheldon source)"
@@ -70,12 +63,6 @@ fi
 
 # fzf cdr
 function fzf-cdr() {
-    # local selected_dir=$(cdr -l | awk '{ print $2 }' | fzf)
-    # if [ -n "$selected_dir" ]; then
-    #     BUFFER="cd ${selected_dir}"
-    #     zle accept-line
-    # fi
-    # zle clear-screen
     zi
     zle reset-prompt
 }
